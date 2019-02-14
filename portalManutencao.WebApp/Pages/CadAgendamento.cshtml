@@ -1,0 +1,84 @@
+﻿@page
+@model portalManutencao.WebApp.Pages.CadAgendamentoModel
+
+@{
+    <label>@Model.WelcomeMessage</label>
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+@*js datapicker*@
+<script src="~/datapicker/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="~/datapicker/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="~/datapicker/bootstrap-datetimepicker/js/bootstrap-datetimepicker.pt-BR.js"></script>
+
+@*css datapicker*@
+<link href="~/datapicker/bootstrap-datetimepicker/css/bootstrap-combined.min.css" rel="stylesheet">
+<link href="~/datapicker/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+
+<div class="container">
+    <h3>Incluir Agendamento</h3>
+    <hr />
+    <br />
+    <form method="post">
+
+        <div class="row">
+            <div class="col-md-4">
+                Data Inicio
+                <div id="dtInicio" class="input-append date">
+                    <input type="text" name="dtInicio" />
+                    <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                    </span>
+                </div>
+                <script type="text/javascript">
+                    $('#dtInicio').datetimepicker({
+                        format: 'dd/MM/yyyy hh:mm:ss',
+                        language: 'pt-BR'
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                Data Final
+                <div id="dtFinal" class="input-append date">
+                    <input type="text" name="dtFinal" />
+                    <span class="add-on">
+                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                    </span>
+                </div>
+                <script type="text/javascript">
+                    $('#dtFinal').datetimepicker({
+                        format: 'dd/MM/yyyy hh:mm:ss',
+                        language: 'pt-BR'
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Cliente</label><br />
+                <select name="cliente" id="cliente" class="form-control" runat="server">
+                    @foreach (var item in @Model.clienteLista)
+                    {
+                        <option value="@item.Id">
+                            @item.PessoaFisica.Nome
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <span class="alert-danger">@Model.erroNome</span>
+
+        <br />
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a class="btn btn-default" href="/VerAgendamento">Cancel</a>
+    </form>
+</div>

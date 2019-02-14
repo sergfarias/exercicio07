@@ -1,0 +1,45 @@
+﻿@page
+@model portalManutencao.WebApp.Pages.VerAgendamentoModel
+@{
+    <label>@Model.WelcomeMessage</label>
+}
+
+<h2>Agendamentos</h2>
+<p>
+    <a asp-page="CadAgendamento">Criar Novo</a>
+</p>
+<table class="table">
+    <thead
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.agendamentoLista[0].ClienteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.agendamentoLista[0].DtInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.agendamentoLista[0].DtFinal)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.agendamentoLista)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtFinal)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Alterar</a> |
+                @Html.ActionLink("Delete", "Delete", "VerSegmento", new { Id = @item.Id }, null)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

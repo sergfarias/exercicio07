@@ -1,0 +1,96 @@
+﻿@page
+@model portalManutencao.WebApp.Pages.CadClienteModel
+
+@{
+    <label>@Model.WelcomeMessage</label>
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<div class="container">
+    <h3>Incluir Cliente</h3>
+    <hr />
+    <br />
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Nome"></label>
+                <input asp-for="Cliente.Nome" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Nome"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Sobrenome"></label>
+                <input asp-for="Cliente.Sobrenome" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Sobrenome"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.CPF"></label>
+                <input asp-for="Cliente.CPF" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.CPF"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Cidade"></label>
+                <input asp-for="Cliente.Cidade" cl class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Cidade"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.UF"></label>
+                <input asp-for="Cliente.UF" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.UF"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Logradouro"></label>
+                <input asp-for="Cliente.Logradouro" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Logradouro"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Numero"></label>
+                <input asp-for="Cliente.Numero" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Numero"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Complemento"></label>
+                <input asp-for="Cliente.Complemento" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Complemento"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.Bairro"></label>
+                <input asp-for="Cliente.Bairro" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.Bairro"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="Cliente.CEP"></label>
+                <input asp-for="Cliente.CEP" class="form-control" />
+                <span class="alert-danger" asp-validation-for="Cliente.CEP"></span>
+            </div>
+        </div>
+
+
+        <span class="alert-danger">@Model.erroNome</span>
+
+        <br />
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a class="btn btn-default" href="/VerFrotista">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,54 @@
+﻿@page
+@model portalManutencao.WebApp.Pages.VerClienteModel
+@{
+    <label>@Model.WelcomeMessage</label>
+}
+
+
+<h2>Clientes</h2>
+<p>
+    <a asp-page="CadCliente">Criar Novo</a>
+</p>
+<table class="table">
+    <thead
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.clienteLista[0].PessoaFisica.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clienteLista[0].PessoaFisica.CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clienteLista[0].Cidade.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clienteLista[0].Cidade.Estado.UF)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.clienteLista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PessoaFisica.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco.Cidade.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco.Cidade.Estado.UF)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Alterar</a> |
+                    @Html.ActionLink("Delete", "Delete", "VerCliente", new { Id = @item.Id }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
